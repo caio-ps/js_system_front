@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    	<title>My first steps with AngularJS</title>
+
+    	<!-- Import Angular and my model -->
+    	<script src="js/angular.js"></script>
+    	<script src="js/root.js"></script>
+    	<link href="css/root.css" rel="stylesheet">
+
+    	<!-- Bootstrap, just to be beuty -->
+    	<link href="css/bootstrap.css" rel="stylesheet">
+	</head>
+
+	<!-- All the secrets are in the 'ng-' attributes -->
+
+	<body ng-app="root">
+   		<div class="container" ng-controller="index">
+   			<!-- This is the way I bind the $scope.message variable! -->
+   			<h1>{{message}}</h1>
+   			<form role="form">
+ 				<div class="form-group">
+ 					<label for="favoriteWord">Favorite word:</label>
+   					<input type="text" class="form-control" id="favoriteWord" placeholder="Type a text, and it will apperar under this input like magic!" ng-model="favoriteWord">
+   					<label>{{favoriteWord}}</label>
+   				</div>
+   				<div class="form-group">
+ 					<label for="favoriteColor">Favorite Color:</label>
+ 					<br />
+   					<input type="radio" name="favoriteColor" value="red" ng-model="favoriteColor">Red</input>
+					<input type="radio" name="favoriteColor" value="green" ng-model="favoriteColor">Green</input>
+					<input type="radio" name="favoriteColor" value="yellow" ng-model="favoriteColor">Yellow</input>
+					<input type="radio" name="favoriteColor" value="blue" ng-model="favoriteColor">Blue</input>
+					<br />
+					<label>You just select 
+						<span ng-class="{red: isRed(), green: isGreen(), yellow: isYellow(), blue:isBlue()}">
+							{{favoriteColor}}
+						</span>
+					!</label>
+   				</div>
+   				<div class="form-group">
+ 					<label for="favoriteShape">Favorite Color:</label>
+   					<select id="favoriteShape" ng-model="favoriteShape">
+						<option value="Circle">Circle</option>
+						<option value="Triangle">Triangle</option>
+						<option value="Square">Square</option>
+					</select>
+					<label>You like the 
+						<span ng-class="{red: isRed(), green: isGreen(), yellow: isYellow(), blue:isBlue()}">
+							{{favoriteShape}}
+						</span> shape!
+					</label>
+				</div>
+				<div class="form-group">
+					<input type="checkbox" id="showTable" ng-model="showTable" />
+ 					<label for="showTable">Show table:</label>   					
+				</div>
+   			</form>
+   			<table class="table table-striped" ng-show="showTable">
+	   			<thead>
+	   				<tr>
+	   					<th>#</th>
+	   					<th>Cool programming languages</th>   					
+	   				</tr>   				
+	   			</thead>
+	   			<tbody>
+	   				<tr ng-repeat="language in programmingLanguages">
+	   					<td>{{language.id}}</td>
+	   					<td>{{language.name}}</td>
+	   				</tr>
+	   			</tbody>
+			</table>
+   		</div>    	
+    </body>
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.js"></script>
+</html>
